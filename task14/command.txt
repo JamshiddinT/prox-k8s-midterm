@@ -1,0 +1,1 @@
+kubectl create ingress golang-ingress --rule='mid-term-j-turdiev.sts404.uz/*=golang-app:80' --class=nginx

@@ -1,0 +1,4 @@
+NAME                   ADDRESSTYPE   PORTS   ENDPOINTS                     AGE
+flask-nodeport-6vsjn   IPv4          5000    10.233.68.129                 7h51m
+frontend-app-pgb7b     IPv4          80      10.233.69.206                 7h15m
+golang-exam-htt5w      IPv4          80      10.233.65.101,10.233.67.151   6h17m

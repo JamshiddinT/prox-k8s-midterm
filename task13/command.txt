@@ -1,0 +1,1 @@
+kubectl expose deploy golang-exam --type NodePort --port 80

@@ -1,0 +1,5 @@
+kubectl run nginx1 --image=nginx:1.22
+kubectl run nginx2 --image=nginx:1.22  
+kubectl label pod nginx1 project=practice author=jamshid
+kubectl label pod nginx2 project=practice author=jamshid
+kubectl get pods -l project=practice --all-namespaces

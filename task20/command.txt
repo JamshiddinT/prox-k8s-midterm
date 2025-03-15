@@ -1,0 +1,4 @@
+curl -s http://mid-term-j-turdiev.sts404.uz/load-capability
+
+
+{"cpus":"1","memorys":"0"}

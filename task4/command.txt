@@ -1,0 +1,8 @@
+kubectl create deploy flask-app --image nvrbckdown/flask-app:p-v4
+kubectl port-forward flaskapp-56498dc9dc-7xwn7 5000:5000
+
+<!doctype html>
+<html lang=en>
+<title>404 Not Found</title>
+<h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>

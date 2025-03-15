@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: golang-exam
+  name: golang-exam
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: golang-exam
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: golang-exam
+    spec:
+      containers:
+      - image: jamshid01994/golangapp:v4
+        name: golangapp
+        resources:
+          limits:
+            cpu: 200m
+            memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 64Mi
+
+        env:
+        - name: CPU
+          valueFrom:
+            resourceFieldRef:
+              containerName: golangapp
+              resource: requests.cpu
+        - name: MEMORY
+          valueFrom:
+            resourceFieldRef:
+              containerName: golangapp
+              resource: requests.memory
+        - name: ENVIRONMENT
+          valueFrom:
+            configMapKeyRef:
+              name: info
+              key: env
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: info
+              key: log_leveI
+        - name: DB_URI
+          valueFrom:
+            secretKeyRef:
+              name: db-sec
+              key: DB_URI
+        - name: GRPC_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: info
+              key: grpc_port
+        - name: POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP

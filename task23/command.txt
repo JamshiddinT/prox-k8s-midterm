@@ -1,0 +1,29 @@
+kubetcl create sa exam-jamshid
+serviceaccount/exam-jamshid created
+
+kubectl create role pod-lister --verb=list,create --resource=pods
+role.rbac.authorization.k8s.io/pod-lister created
+
+kubectl create rolebinding pod-lister-binding --role=pod-lister --serviceaccount=exam-golang:exam-jamshid
+rolebinding.rbac.authorization.k8s.io/pod-lister-binding created
+
+kubectl get role pod-lister -o yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  creationTimestamp: "2025-03-15T06:39:05Z"
+  name: pod-lister
+  namespace: exam-jamshid
+  resourceVersion: "8701733"
+  uid: 87b3f873-4ed2-4383-9d80-b2789b808716
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - list
+  - create
+
+kubectl auth can-i list pods --as=system:serviceaccount:exam-golang:exam-jamshid
+yes
